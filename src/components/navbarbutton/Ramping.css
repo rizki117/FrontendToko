@@ -1,0 +1,191 @@
+/* Modern Bottom Navbar - Ramping & Clean */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* Container utama navbar bawah */
+.bottom-navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  padding: 8px 0 12px 0;
+  padding-bottom: max(12px, env(safe-area-inset-bottom) + 8px);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  height: 60px;
+}
+
+/* Container untuk tab-tab */
+.nav-tabs-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0 16px;
+  height: 100%;
+}
+
+/* Styling untuk setiap tab */
+.nav-tab-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 6px 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  min-width: 48px;
+  flex: 1;
+  max-width: 64px;
+  transition: all 0.2s ease;
+}
+
+/* Hover effect - subtle */
+.nav-tab-item:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* Active state - simple */
+.nav-tab-item.active {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* Icon styling */
+.nav-tab-icon {
+  width: 22px !important;
+  height: 22px !important;
+  transition: color 0.2s ease;
+}
+
+/* Icon colors - inactive state */
+.nav-tab-item:not(.active) .nav-tab-icon {
+  color: #9CA3AF;
+  stroke-width: 2;
+}
+
+/* Icon colors - active state */
+.nav-tab-item.active.beranda .nav-tab-icon { color: #FF6B6B; }
+.nav-tab-item.active.cari .nav-tab-icon { color: #4ECDC4; }
+.nav-tab-item.active.wishlist .nav-tab-icon { color: #FF69B4; }
+.nav-tab-item.active.pesanan .nav-tab-icon { color: #45B7D1; }
+.nav-tab-item.active.profil .nav-tab-icon { color: #96CEB4; }
+
+/* Label text */
+.nav-tab-label {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  transition: color 0.2s ease;
+  text-align: center;
+  letter-spacing: 0.1px;
+}
+
+/* Label colors - inactive */
+.nav-tab-item:not(.active) .nav-tab-label {
+  color: #9CA3AF;
+}
+
+/* Label colors - active */
+.nav-tab-item.active.beranda .nav-tab-label { color: #FF6B6B; }
+.nav-tab-item.active.cari .nav-tab-label { color: #4ECDC4; }
+.nav-tab-item.active.wishlist .nav-tab-label { color: #FF69B4; }
+.nav-tab-item.active.pesanan .nav-tab-label { color: #45B7D1; }
+.nav-tab-item.active.profil .nav-tab-label { color: #96CEB4; }
+
+/* RESPONSIVE DESIGN */
+
+/* Mobile kecil */
+@media (max-width: 320px) {
+  .nav-tabs-container {
+    padding: 0 8px;
+  }
+  
+  .nav-tab-item {
+    padding: 4px 6px;
+    min-width: 44px;
+  }
+  
+  .nav-tab-icon {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  
+  .nav-tab-label {
+    font-size: 9px;
+  }
+}
+
+/* Mobile standar */
+@media (min-width: 321px) and (max-width: 375px) {
+  .nav-tabs-container {
+    padding: 0 12px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+  .nav-tabs-container {
+    max-width: 480px;
+  }
+  
+  .nav-tab-item {
+    padding: 8px 10px;
+  }
+  
+  .nav-tab-icon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  
+  .nav-tab-label {
+    font-size: 11px;
+  }
+}
+
+/* Accessibility */
+.nav-tab-item:focus {
+  outline: none;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .bottom-navbar {
+    background: rgba(17, 24, 39, 0.95);
+    border-top-color: rgba(55, 65, 81, 0.3);
+  }
+  
+  .nav-tab-item:hover {
+    background: rgba(55, 65, 81, 0.3);
+  }
+  
+  .nav-tab-item.active {
+    background: rgba(55, 65, 81, 0.4);
+  }
+}
+
+/* Body padding adjustment */
+body {
+  padding-bottom: 100px;
+}
+
+/* Safe area untuk iPhone */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .bottom-navbar {
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    height: calc(60px + env(safe-area-inset-bottom));
+  }
+  
+  body {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom));
+  }
+}
