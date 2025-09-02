@@ -14,6 +14,7 @@ const ProductList = () => {
             description={product.description}
             price={product.price}
             imageUrl={product.imageUrl}
+            sellerPhone={product.sellerPhone}
           />
         ))}
       </Row>

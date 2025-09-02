@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import { Card, Col } from "react-bootstrap";
 import ProductModal from "./ProductModal";
 
-const ProductCard = ({ title, description, price, imageUrl }) => {
+const ProductCard = ({ title, description, price, imageUrl, sellerPhone}) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
 
   // data produk dikirim ke modal
-  const productData = { title, description, price, imageUrl };
+  const productData = { title, description, price, imageUrl, sellerPhone};
 
   return (
     <>
